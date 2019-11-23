@@ -1,11 +1,13 @@
 package io.r_a_d.radio2.ui.chat
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.webkit.CookieManager
 import android.webkit.WebView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -49,7 +51,38 @@ class ChatFragment : Fragment() {
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
+
         super.onActivityCreated(savedInstanceState)
+    }
+
+    override fun onPause() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            CookieManager.getInstance().flush()
+        }
+        else {
+            CookieManager.getInstance().setAcceptCookie(true)
+        }
+        super.onPause()
+    }
+
+    override fun onResume() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            CookieManager.getInstance().flush()
+        }
+        else {
+            CookieManager.getInstance().setAcceptCookie(true)
+        }
+        super.onResume()
+    }
+
+    override fun onDestroyView() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            CookieManager.getInstance().flush()
+        }
+        else {
+            CookieManager.getInstance().setAcceptCookie(true)
+        }
+        super.onDestroyView()
     }
 
 

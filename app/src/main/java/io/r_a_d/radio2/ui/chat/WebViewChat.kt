@@ -3,6 +3,8 @@ package io.r_a_d.radio2.ui.chat
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
+import android.webkit.CookieManager
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 
@@ -10,7 +12,6 @@ class WebViewChat(private val webView: WebView) {
 
         @SuppressLint("SetJavaScriptEnabled")
         fun start() {
-
             val webSetting = this.webView.settings
             webSetting.javaScriptEnabled = true
             webSetting.setSupportZoom(false)
@@ -21,6 +22,7 @@ class WebViewChat(private val webView: WebView) {
          - Hide the chat?
          - do more? */
             webSetting.textZoom = 90
+            webSetting.setAppCacheEnabled(true)
 
             webSetting.setSupportMultipleWindows(true)
             // needs to open target="_blank" links as KiwiIRC links have this attribute.
@@ -41,7 +43,14 @@ class WebViewChat(private val webView: WebView) {
                 }
             }
 
-            webView.loadUrl("file:///android_asset/chat.html")
+            webView.loadUrl(" file:///android_asset/chat.html") /* https://kiwiirc.com/nextclient/?theme=dark#irc://irc.rizon.net:+6697/#r/a/dio */
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                CookieManager.getInstance().setAcceptThirdPartyCookies(webView, true)
+            }
+            else {
+                CookieManager.getInstance().setAcceptCookie(true)
+            }
         }
 
     }
