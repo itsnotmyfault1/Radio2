@@ -9,7 +9,7 @@
         app:key="userName"
         app:title="User name for favorite songs"
         />
-
+<!--
     <SeekBarPreference
         app:key="volume"
         app:iconSpaceReserved="false"
@@ -19,6 +19,14 @@
         android:max="100"
         android:defaultValue="100"
         app:showSeekBarValue="true"
+        />
+-->
+    <SwitchPreferenceCompat
+        app:key="autoStartOnPlug"
+        app:iconSpaceReserved="false"
+        app:title="Auto play when plugging headphones"
+        app:singleLineTitle="false"
+        app:defaultValue="false"
         />
 
     <SwitchPreferenceCompat
