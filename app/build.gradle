@@ -16,8 +16,8 @@ configurations.all {
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "29.0.2"
+    compileSdkVersion 23
+    buildToolsVersion "24.0.0"
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -28,7 +28,7 @@ android {
     defaultConfig {
         applicationId "io.r_a_d.radio2"
         minSdkVersion 16
-        targetSdkVersion 30
+        targetSdkVersion 23
         versionCode 15
         versionName "2.0.0 RC3"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
